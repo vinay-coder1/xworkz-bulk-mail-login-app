@@ -51,7 +51,7 @@ public class MailController {
 	public ModelAndView sendSMS(@RequestParam("uploadFile") MultipartFile file,@RequestParam("msg") String msg) {
 		logger.info("is called....");
 		
-		ModelAndView modelAndView = new ModelAndView("index");
+		ModelAndView modelAndView = new ModelAndView("index.jsp");
 		if (!file.isEmpty()) {
 			logger.debug("contant type {}", file.getContentType());
 			List<String> contactList =xworkzService.getContactListFromXls(file);
@@ -108,7 +108,7 @@ public class MailController {
 	}
 	
 	public ModelAndView sendMail(SendMailDTO dto) {
-		ModelAndView modelAndView=new ModelAndView("index");
+		ModelAndView modelAndView=new ModelAndView("index.jsp");
 		 logger.info("List Name="+dto.getListName());
 		 logger.info("Msg Id="+dto.getMsgType());
 		String listId=clientService.getListIdFromListName(dto.getListName(),dto.getMsgType());
