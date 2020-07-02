@@ -45,7 +45,7 @@ public class LoginController {
 	@RequestMapping(value = "/otp.do", method = RequestMethod.POST)
 	public ModelAndView generateOTP(@ModelAttribute LoginDTO dto, Model model) {
 		logger.info("invoked generateOTP()...");
-		ModelAndView modelAndView = new ModelAndView("Login");
+		ModelAndView modelAndView = new ModelAndView("Login.jsp");
 		try {
 			model.addAttribute("dto", dto);
 			if (dto.getUserName().equals("X-Workzodc")) {
@@ -75,13 +75,13 @@ public class LoginController {
 				logger.info("DETAILS = " + dto.toString());
 				model.addAttribute("loginsuccess", "Logined Successfully, UserName and Password Macthed.");
 				logger.info("Logined Successfully, UserName and Password Macthed.");
-				return new ModelAndView("index");
+				return new ModelAndView("index.jsp");
 			}
 
 			else {
 				model.addAttribute("loginfaildbypasswod", "Login Faild! , UserName and Passwords Is Incorrect. ");
 				logger.info("Logined Successfully, UserName and Passwords Is Incorrect.");
-				return new ModelAndView("Login");
+				return new ModelAndView("Login.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
