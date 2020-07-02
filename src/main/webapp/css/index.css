@@ -1,0 +1,102 @@
+@charset "ISO-8859-1";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.backgroundImage {
+	background-image: url("https://raw.githubusercontent.com/vinay-coder1/xworkz-bulk-mail-app/master/prism.png");
+	/* Center and scale the image nicely */
+	background-repeat: repeat;
+	height: 100%;
+	min-height: 750px;
+}
+
+h1 {
+	color: white;
+	font-weight: 900;
+	margin-left: 5%;
+}
+
+.header {
+	overflow: hidden;
+	/*   background-color: #f1f1f1; */
+	background-image: linear-gradient(#4d4a4a, black, #8a5528);
+	padding: 20px 10px;
+}
+
+.container_border {
+	background-image: linear-gradient(#8a5528, black, #4d4a4a);
+	margin-bottom: 3%;
+	height: 290%;
+	border-radius: 12px;
+	min-height: 500px;
+}
+
+.header a {
+	float: left;
+	color: black;
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 4px;
+	margin-left: 25%;
+}
+
+.header a.logo {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.header-right {
+	float: left;
+	margin-right: 5%;
+	width: 50%;
+	margin-top: 0.8%;
+}
+
+h2 {
+	font-weight: 700;
+}
+
+.list_right {
+	float: right;
+}
+
+table h4 {
+	align-items: flex-end;
+}
+
+h2 {
+	font-weight: 700;
+}
+
+.list_right {
+	float: right;
+}
+
+table h4 {
+	align-items: flex-end;
+}
+
+.error {
+	color: red;
+	font-size: 14px;
+}
+
+@media screen and (max-width: 500px) {
+	.header a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+	.header-right {
+		float: none;
+	}
+}
