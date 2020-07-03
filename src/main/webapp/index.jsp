@@ -75,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					style="color: white; text-align: center; margin-top: 3%">
 					<div class="col-md-3"></div>
 					<div class="col-md-6">
-						<h3>
+						<h3 style="color: red;">
 							<b>${msg}</b>
 							<b>${loginsuccess}</b>
 							<b>${loginfaildbypasswod}</b>
