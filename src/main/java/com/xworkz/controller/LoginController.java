@@ -52,7 +52,7 @@ public class LoginController {
 			model.addAttribute("dto", dto);
 			if (dto.getUserName().equals("X-Workzodc")) {
 				if (loginService.generateOTP())
-					modelAndView.addObject("Successmsg", "Your one-time password has been sent to your Email id.");
+					modelAndView.addObject("Successmsg", "The one-time password has been sent to your Email id.");
 				    logger.info("OTP Sent Successfully TO Your Email ID");
 
 			} else {
