@@ -1,108 +1,96 @@
-package com.xworkz.service;
+package com.xworkz.controller;
 
-import java.util.Objects;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.xworkz.dao.LoginControllerDAO;
 import com.xworkz.dto.LoginDTO;
+import com.xworkz.service.LoginControllerService;
 
-@Service
-public class LoginControllerServiceImpl implements LoginControllerService {
+@RestController
+@RequestMapping("/")
+public class LoginController {
 
-	static Logger logger = LoggerFactory.getLogger(LoginControllerServiceImpl.class);
-	
-	public static String temporaryPass;
-	
-	@Autowired
-	private  LoginControllerDAO loginDAO;
+	static Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
-	private SpringMailService mailService;
+	private LoginControllerService loginService;
 
-	public LoginControllerServiceImpl() {
+	public LoginController() {
 		logger.info("{} Is Created...........", this.getClass().getSimpleName());
 	}
-	
 
 	public static Logger getLogger() {
 		return logger;
 	}
 
 	public static void setLogger(Logger logger) {
-		LoginControllerServiceImpl.logger = logger;
+		LoginController.logger = logger;
 	}
 
-	public LoginControllerDAO getLoginDAO() {
-		return loginDAO;
+	public LoginControllerService getLoginService() {
+		return loginService;
 	}
 
-	public void setLoginDAO(LoginControllerDAO loginDAO) {
-		this.loginDAO = loginDAO;
+	public void setLoginService(LoginControllerService loginService) {
+		this.loginService = loginService;
 	}
 
-	public SpringMailService getMailService() {
-		return mailService;
-	}
-
-	public void setMailService(SpringMailService mailService) {
-		this.mailService = mailService;
-	}
-
-	@Override
-	public boolean validateAndLogin(LoginDTO dto, Model model) {
-		logger.info("invoked validateAndLogin...");
-
-		String givenPassword = dto.getPassword();
-		logger.info("givenPassword="+givenPassword);
-		
-		logger.info("temporaryPass="+temporaryPass);
-	
-		if(givenPassword.equals(temporaryPass)) {
-			logger.info("givenPassword is correct");
-			return true;
-		}
-		else {
-			logger.info("givenPassword is Incorrect");
-			return false;
-		}
-		
-	}
-
-	@Override
-	public boolean generateOTP() {
-		logger.info("invoked generateOTP in service...");
-
+	@RequestMapping(value = "/otp.do", method = RequestMethod.POST)
+	public ModelAndView generateOTP(@ModelAttribute LoginDTO dto, Model model) {
+		logger.info("invoked generateOTP()...");
+		ModelAndView modelAndView = new ModelAndView("Login.jsp");
 		try {
-			String onetimepass = loginDAO.genarateOTP();
-			   temporaryPass=onetimepass;
-			if (Objects.nonNull(onetimepass)) {
-				logger.info("onetimepass generated in service...");
-				String mailID = "contact@x-workz.in";
-				String subject = "Xworkz Bulk Mail App OTP";
-				String body = "Hi  X-workzodc"+"\n Your Xworkz Bulk Mail App, One Time Password is ="
-						+ onetimepass;
-				boolean mailvalidation = mailService.validateAndSendMailByMailId(mailID, subject, body);
+			model.addAttribute("dto", dto);
+			if (dto.getUserName().equals("X-Workzodc")) {
+				if (loginService.generateOTP())
+					modelAndView.addObject("Successmsg", "OTP Sent Successfully To contact@x-workz.in");
+				    logger.info("OTP Sent Successfully TO Your Email ID");
 
-				if (mailvalidation) {
-					logger.info("success", "Your Password sent to your mailID");
-					return true;
-				} else {
-					logger.info("faild", "Password can't able send to your mailID!");
-					return false;
-				}
+			} else {
+				modelAndView.addObject("Failmsg", "OTP Sent Failed ,Check The UserName!");
+				logger.info("OTP Sent Failed ,Check The UserId!");
 
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage(), e);
 		}
-		return false;
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public ModelAndView onLogin(@ModelAttribute LoginDTO dto, Model model) {
+		logger.info("invoked onLogin()...");
+		try {
+			model.addAttribute("dto", dto);
+			boolean validation = this.loginService.validateAndLogin(dto, model);
+			if (validation) {
+				logger.info("DETAILS = " + dto.toString());
+				model.addAttribute("loginsuccess", "Logined Successfully, UserName and Password Macthed.");
+				logger.info("Logined Successfully, UserName and Password Macthed.");
+				return new ModelAndView("index.jsp");
+			}
+
+			else {
+				model.addAttribute("loginfaildbypasswod", "Login Faild! ,Passwords Is Incorrect OR Time Out Please Genarate An OTP Again!");
+				logger.info("Login Faild! ,Passwords Is Incorrect OR Time Out Please Genarate OTP Again!");
+				return new ModelAndView("Login.jsp");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage(), e);
+		}
+
+		return null;
 
 	}
 
