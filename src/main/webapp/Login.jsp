@@ -69,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-3"></div>
 					<div class="col-md-6">
 						<h3 style="color: red;">
-							<b>${Successmsg}${Failmsg}</b>
+							<b>${Successmsg}${Failmsg}${loginfaildbypasswod}</b>
 						</h3>
 					</div>
 					<div class="col-md-3"></div>
