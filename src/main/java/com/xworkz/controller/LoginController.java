@@ -52,12 +52,12 @@ public class LoginController {
 			model.addAttribute("dto", dto);
 			if (dto.getUserName().equals("X-Workzodc")) {
 				if (loginService.generateOTP())
-					modelAndView.addObject("Successmsg", "OTP Sent Successfully To Your Email Id.");
+					modelAndView.addObject("Successmsg", "Your one-time password has been sent to your Email id.");
 				    logger.info("OTP Sent Successfully TO Your Email ID");
 
 			} else {
-				modelAndView.addObject("Failmsg", "OTP Sent Failed ,Check The UserName!");
-				logger.info("OTP Sent Failed ,Check The UserName!");
+				modelAndView.addObject("Failmsg", "Failed to send OTP, The Username supplied was not valid. Please try again!");
+				logger.info("OTP Sent Failed ,Check The UserId!");
 
 			}
 		} catch (Exception e) {
@@ -75,13 +75,13 @@ public class LoginController {
 			boolean validation = this.loginService.validateAndLogin(dto, model);
 			if (validation) {
 				logger.info("DETAILS = " + dto.toString());
-				model.addAttribute("loginsuccess", "Logined Successfully, UserName and Password Macthed.");
+				model.addAttribute("loginsuccess", "You have successfully logged in.");
 				logger.info("Logined Successfully, UserName and Password Macthed.");
 				return new ModelAndView("index.jsp");
 			}
 
 			else {
-				model.addAttribute("loginfaildbypasswod", "Login Faild! ,Passwords Is Incorrect OR Time Out Please Genarate An OTP Again!");
+				model.addAttribute("loginfaildbypasswod", "The OTP entered is invalid or expired. Please generate a new OTP and try again.");
 				logger.info("Login Faild! ,Passwords Is Incorrect OR Time Out Please Genarate OTP Again!");
 				return new ModelAndView("Login.jsp");
 			}
