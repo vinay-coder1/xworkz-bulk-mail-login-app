@@ -1,5 +1,7 @@
 package com.xworkz.controller;
 
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,12 +52,12 @@ public class LoginController {
 			model.addAttribute("dto", dto);
 			if (dto.getUserName().equals("X-Workzodc")) {
 				if (loginService.generateOTP())
-					modelAndView.addObject("Successmsg", "OTP Sent Successfully To contact@x-workz.in");
-				    logger.info("OTP Sent Successfully TO contact@x-workz.in");
+					modelAndView.addObject("Successmsg", "OTP Sent Successfully To Your Email Id.");
+				    logger.info("OTP Sent Successfully TO Your Email ID");
 
 			} else {
 				modelAndView.addObject("Failmsg", "OTP Sent Failed ,Check The UserName!");
-				logger.info("OTP Sent failed ,check the UserId!");
+				logger.info("OTP Sent Failed ,Check The UserName!");
 
 			}
 		} catch (Exception e) {
@@ -79,8 +81,8 @@ public class LoginController {
 			}
 
 			else {
-				model.addAttribute("loginfaildbypasswod", "Login Faild! , UserName and Passwords Is Incorrect. ");
-				logger.info("Logined Successfully, UserName and Passwords Is Incorrect.");
+				model.addAttribute("loginfaildbypasswod", "Login Faild! ,Passwords Is Incorrect OR Time Out Please Genarate An OTP Again!");
+				logger.info("Login Faild! ,Passwords Is Incorrect OR Time Out Please Genarate OTP Again!");
 				return new ModelAndView("Login.jsp");
 			}
 		} catch (Exception e) {
