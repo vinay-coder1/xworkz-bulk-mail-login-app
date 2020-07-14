@@ -40,7 +40,7 @@
 		<org.thymeleaf.version>3.0.11.RELEASE</org.thymeleaf.version>
 		<thymeleaf-spring5.version>3.0.11.RELEASE</thymeleaf-spring5.version>
 		<appengine-maven-plugin.version>1.9.80</appengine-maven-plugin.version>
-		<fasterxml.jackson.core.version>2.9.4</fasterxml.jackson.core.version>
+		<fasterxml.jackson.core.version>2.11.1</fasterxml.jackson.core.version>
 		<fasterxml.jackson.annotations.version>2.9.4</fasterxml.jackson.annotations.version>
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
 		<maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
