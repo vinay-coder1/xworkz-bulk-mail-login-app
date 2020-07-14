@@ -314,6 +314,9 @@
 					<groupId>com.google.cloud.tools</groupId>
 					<artifactId>appengine-maven-plugin</artifactId>
 					<version>${google.cloud.tools.version}</version>
+					<configuration>
+                                          <deploy.projectId>xworkz-bulk-mail-app</deploy.projectId>
+                                       </configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
