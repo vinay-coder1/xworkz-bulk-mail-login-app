@@ -3,4 +3,7 @@
     <threadsafe>true</threadsafe>
     <runtime>java8</runtime>
     <version>1</version>
+    <system-properties>
+  <property name="spring.profiles.active" value="QA" />
+</system-properties>
 </appengine-web-app>
