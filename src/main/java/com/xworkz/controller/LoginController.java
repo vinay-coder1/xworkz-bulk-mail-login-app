@@ -1,64 +1,50 @@
 package com.xworkz.controller;
 
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.xworkz.dto.LoginDTO;
-import com.xworkz.service.LoginControllerService;
+import com.xworkz.service.LoginService;
 
 @RestController
 @RequestMapping("/")
 public class LoginController {
 
-	static Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+	@Value("${login.username}")
+	private String username;
 
 	@Autowired
-	private LoginControllerService loginService;
+	private LoginService loginService;
 
 	public LoginController() {
 		logger.info("{} Is Created...........", this.getClass().getSimpleName());
 	}
 
-	public static Logger getLogger() {
-		return logger;
-	}
-
-	public static void setLogger(Logger logger) {
-		LoginController.logger = logger;
-	}
-
-	public LoginControllerService getLoginService() {
-		return loginService;
-	}
-
-	public void setLoginService(LoginControllerService loginService) {
-		this.loginService = loginService;
-	}
-
 	@RequestMapping(value = "/otp.do", method = RequestMethod.POST)
-	public ModelAndView generateOTP(@ModelAttribute LoginDTO dto, Model model) {
+	public ModelAndView generateOTP(@ModelAttribute LoginDTO dto) {
 		logger.info("invoked generateOTP()...");
-		ModelAndView modelAndView = new ModelAndView("Login.jsp");
+		ModelAndView modelAndView = new ModelAndView("Login");
 		try {
-			model.addAttribute("dto", dto);
-			if (dto.getUserName().equals("X-Workzodc")) {
+			modelAndView.addObject("dto", dto);
+			if (dto.getUserName().equals(username)) {
 				if (loginService.generateOTP())
-					modelAndView.addObject("Successmsg", "The one-time password has been sent to your Email id.");
-				    logger.info("OTP Sent Successfully TO Your Email ID");
+					modelAndView.addObject("Successmsg", "One-time password has been sent to your Email id.");
+				logger.info("OTP Sent Successfully TO Your Email ID");
+				return modelAndView;
 
 			} else {
-				modelAndView.addObject("Failmsg", "Failed to send OTP, The Username supplied was not valid. Please try again!");
+				modelAndView.addObject("Failmsg",
+						"Failed to send OTP, The Username supplied was not valid. Please try again!");
 				logger.info("OTP Sent Failed ,Check The UserId!");
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,19 +57,19 @@ public class LoginController {
 	public ModelAndView onLogin(@ModelAttribute LoginDTO dto, Model model) {
 		logger.info("invoked onLogin()...");
 		try {
-			model.addAttribute("dto", dto);
-			boolean validation = this.loginService.validateAndLogin(dto, model);
+			boolean validation = this.loginService.validateAndLogin(dto);
 			if (validation) {
-				logger.info("DETAILS = " + dto.toString());
 				model.addAttribute("loginsuccess", "You have successfully logged in.");
 				logger.info("Logined Successfully, UserName and Password Macthed.");
-				return new ModelAndView("index.jsp");
+				return new ModelAndView("index");
 			}
 
 			else {
-				model.addAttribute("loginfaildbypasswod", "The OTP entered is invalid or expired. Please generate a new OTP and try again.");
-				logger.info("Login Faild! ,Passwords Is Incorrect OR Time Out Please Genarate OTP Again!");
-				return new ModelAndView("Login.jsp");
+				model.addAttribute("loginfaildbypasswod",
+						"The OTP entered is invalid or expired. Please generate a new OTP and try again.");
+				logger.info(
+						"Login Faild! ,The OTP entered is invalid or expired. Please generate a new OTP and try again.");
+				return new ModelAndView("Login");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

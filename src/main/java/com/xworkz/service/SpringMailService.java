@@ -1,6 +1,8 @@
 package com.xworkz.service;
 
+import org.springframework.mail.javamail.MimeMessagePreparator;
+
 public interface SpringMailService {
 
-	public boolean validateAndSendMailByMailId(String to ,String subject ,String body);
+	public boolean validateAndSendMailByMailId(MimeMessagePreparator messagePreparator);
 }

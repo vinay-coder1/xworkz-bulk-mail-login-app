@@ -6,7 +6,7 @@ id="WebApp_ID" version="3.0">
 	<display-name>Archetype Created Web Application</display-name>
 	
      <welcome-file-list>
-     <welcome-file>Login.jsp</welcome-file>
+     <welcome-file>/jsp/Login.jsp</welcome-file>
      </welcome-file-list>
      
 	<servlet>
@@ -22,4 +22,8 @@ id="WebApp_ID" version="3.0">
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	
+   <session-config>
+        <session-timeout>2</session-timeout>
+    </session-config>	
 </web-app>

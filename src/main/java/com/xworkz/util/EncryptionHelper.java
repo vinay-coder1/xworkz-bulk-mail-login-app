@@ -80,11 +80,10 @@ public class EncryptionHelper {
 		return null;
 		
 	}
-	
-	
-	public static void main(String[] args) {
-		EncryptionHelper en =new EncryptionHelper();
-		String st= en.encrypt("0N7DCNT1L6HNNXRU");
-		System.out.println(st);
-	}
+		
+	/*
+	 * public static void main(String[] args) { EncryptionHelper en =new
+	 * EncryptionHelper(); String st= en.encrypt("0N7DCNT1L6HNNXRU");
+	 * System.out.println(st); }
+	 */
 }

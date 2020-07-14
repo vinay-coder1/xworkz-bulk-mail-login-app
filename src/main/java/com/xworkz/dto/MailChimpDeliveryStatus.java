@@ -2,28 +2,19 @@ package com.xworkz.dto;
 
 import java.io.Serializable;
 
-public class MailChimpDeliveryStatus implements Serializable{
-	
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class MailChimpDeliveryStatus implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
-	boolean enabled;
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+	private boolean enabled;
 
 	public MailChimpDeliveryStatus() {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "MailChimpDeliveryStatus [enabled=" + enabled + "]";
-	}
-	
-	
 }
