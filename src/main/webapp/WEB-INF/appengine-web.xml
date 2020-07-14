@@ -4,9 +4,7 @@
     <runtime>java8</runtime>
     <version>1</version>
     <system-properties>
-    <deploy.projectId>xworkz-bulk-mail-app</deploy.projectId>
-    <deploy.projectId>APPENGINE_CONFIG</deploy.projectId> to use <application> from appengine-web.xml
-    <deploy.projectId>GCLOUD_CONFIG</deploy.projectId> to use project from gcloud config.    
+    <deploy.projectId>xworkz-bulk-mail-app</deploy.projectId>    
   <property name="spring.profiles.active" value="QA" />
 </system-properties>
 </appengine-web-app>
