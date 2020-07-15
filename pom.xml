@@ -52,8 +52,8 @@
 		<appengine.target.version>1.9.71</appengine.target.version>
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-		<appengine-maven-plugin-version>1.3.2</appengine-maven-plugin-version>
-		<google.cloud.tools.version>2.0.0-rc2</google.cloud.tools.version>
+		<appengine-maven-plugin-version>1.9.80</appengine-maven-plugin-version>
+		<google.cloud.tools.version>1.9.80</google.cloud.tools.version>
 	</properties>
 
 	<dependencies>
