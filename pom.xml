@@ -52,8 +52,7 @@
 		<appengine.target.version>1.9.71</appengine.target.version>
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-		<appengine-maven-plugin-version>1.3.2</appengine-maven-plugin-version>
-		<google.cloud.tools.version>1.3.2</google.cloud.tools.version>
+		<appengine-maven-plugin-version>2.2.0</appengine-maven-plugin-version>
 	</properties>
 
 	<dependencies>
@@ -313,10 +312,14 @@
 				<plugin>
 					<groupId>com.google.cloud.tools</groupId>
 					<artifactId>appengine-maven-plugin</artifactId>
-					<version>${google.cloud.tools.version}</version>
+					<version>${appengine-maven-plugin-version}</version>
 					<configuration>
-                                          <deploy.projectId>xworkz-bulk-mail-app</deploy.projectId>
-                                       </configuration>
+					<deploy.projectId>xworkz-mail-app</deploy.projectId>
+					<deploy.version>v01</deploy.version>
+					<stage.enableJarSplitting>true</stage.enableJarSplitting>
+					<deploy.stopPreviousVersion>true</deploy.stopPreviousVersion>
+					<cloudSdkPath>/usr/foo/path/to/cloudsdk</cloudSdkPath>
+				</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

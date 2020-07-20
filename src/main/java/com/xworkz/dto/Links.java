@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Links implements Serializable{
-	
+public class Links implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	private String rel;
