@@ -314,7 +314,7 @@
 					<artifactId>appengine-maven-plugin</artifactId>
 					<version>${appengine-maven-plugin-version}</version>
 					<configuration>
-					<deploy.projectId>xworkz-mail-app</deploy.projectId>
+					<deploy.projectId>bulk-mail-app</deploy.projectId>
 					<deploy.version>v01</deploy.version>
 					<stage.enableJarSplitting>true</stage.enableJarSplitting>
 					<deploy.stopPreviousVersion>true</deploy.stopPreviousVersion>
