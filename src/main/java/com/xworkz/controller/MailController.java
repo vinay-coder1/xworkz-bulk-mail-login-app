@@ -152,7 +152,7 @@ public class MailController {
 	@RequestMapping(value = "/getReport.do", produces = "application/JSON", method = RequestMethod.GET)
 	@ResponseBody
 	public String data() {
-		logger.info("invoked {}",this.getClass().getSimpleName());
+		logger.info("invoked {}", this.getClass().getSimpleName());
 		return xworkzService.getReport("2019-12-01", "2020-01-30");
 	}
 }

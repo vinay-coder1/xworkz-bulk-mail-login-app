@@ -17,7 +17,7 @@ async function getDropdownDetails(stringValue){
 		    this.width; 
 		});
 
-// $('#imgURL').val(data.News_Feed);
+ $('#imgURL').val(data.News_Feed);
 		}
 	if(stringValue == "Birthday"){
 		$("#imgURL1").attr("value",data.Birthday);
@@ -25,7 +25,7 @@ async function getDropdownDetails(stringValue){
 		    this.width; 
 		});
 
-// $('#imgURL').val(data.Birthday);
+ $('#imgURL').val(data.Birthday);
 	}
 }
 

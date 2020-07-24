@@ -38,22 +38,22 @@ public class EncryptionHelper {
 			String encryptedText = encoder.encodeToString(encryptedByte);
 			return encryptedText;
 		} catch (UnsupportedEncodingException e) {
-			logger.error("Encoding is unsupported exception is {} and message is {}",e,e.getMessage());
+			logger.error("Encoding is unsupported exception is {} and message is {}", e, e.getMessage());
 		} catch (NoSuchAlgorithmException e) {
-			logger.error("Algorithm is not found exception is {} and message is {}",e,e.getMessage());
+			logger.error("Algorithm is not found exception is {} and message is {}", e, e.getMessage());
 		} catch (NoSuchPaddingException e) {
-			logger.error("padding is not found exception is {} and message is {}",e,e.getMessage());
+			logger.error("padding is not found exception is {} and message is {}", e, e.getMessage());
 		} catch (InvalidKeyException e) {
-			logger.error("Key is invalid exception is {} and message is {}",e,e.getMessage());
+			logger.error("Key is invalid exception is {} and message is {}", e, e.getMessage());
 		} catch (IllegalBlockSizeException e) {
-			logger.error("exception is {} and message is {}",e,e.getMessage());
+			logger.error("exception is {} and message is {}", e, e.getMessage());
 		} catch (BadPaddingException e) {
-			logger.error("exception is {} and message is {}",e,e.getMessage());
+			logger.error("exception is {} and message is {}", e, e.getMessage());
 		}
 		return null;
 	}
 
-	public String decrypt(String encryptedText){
+	public String decrypt(String encryptedText) {
 		SecretKey secretKey;
 		try {
 			secretKey = new SecretKeySpec(secretKeyString.getBytes("UTF-8"), "AES");
@@ -65,22 +65,22 @@ public class EncryptionHelper {
 			String decryptedText = new String(decryptedByte);
 			return decryptedText;
 		} catch (UnsupportedEncodingException e) {
-			logger.error("Encoding is unsupported exception is {} and message is {}",e,e.getMessage());
+			logger.error("Encoding is unsupported exception is {} and message is {}", e, e.getMessage());
 		} catch (NoSuchAlgorithmException e) {
-			logger.error("Algorithm is not found exception is {} and message is {}",e,e.getMessage());
+			logger.error("Algorithm is not found exception is {} and message is {}", e, e.getMessage());
 		} catch (NoSuchPaddingException e) {
-			logger.error("padding is not found exception is {} and message is {}",e,e.getMessage());
+			logger.error("padding is not found exception is {} and message is {}", e, e.getMessage());
 		} catch (InvalidKeyException e) {
-			logger.error("Key is invalid exception is {} and message is {}",e,e.getMessage());
+			logger.error("Key is invalid exception is {} and message is {}", e, e.getMessage());
 		} catch (IllegalBlockSizeException e) {
-			logger.error("exception is {} and message is {}",e,e.getMessage());
+			logger.error("exception is {} and message is {}", e, e.getMessage());
 		} catch (BadPaddingException e) {
-			logger.error("exception is {} and message is {}",e,e.getMessage());
+			logger.error("exception is {} and message is {}", e, e.getMessage());
 		}
 		return null;
-		
+
 	}
-		
+
 	/*
 	 * public static void main(String[] args) { EncryptionHelper en =new
 	 * EncryptionHelper(); String st= en.encrypt("0N7DCNT1L6HNNXRU");

@@ -12,7 +12,7 @@ import com.xworkz.util.EncryptionHelper;
 import com.xworkz.util.ExcelHelper;
 
 @Service
-public class XworkzServiceImpl implements XworkzService{
+public class XworkzServiceImpl implements XworkzService {
 
 	static Logger logger = LoggerFactory.getLogger(XworkzServiceImpl.class);
 	@Autowired
@@ -59,18 +59,18 @@ public class XworkzServiceImpl implements XworkzService{
 							encryptionHelper.decrypt(apiKey), encryptionHelper.decrypt(secretKey), senderId, useType);
 					String res = smsService.sendCampaign(encryptionHelper.decrypt(apiKey),
 							encryptionHelper.decrypt(secretKey), useType, phone, message, senderId);
-					logger.info("Result is {}",res);
+					logger.info("Result is {}", res);
 				} catch (InterruptedException e) {
-					logger.error("\n\nMessage is {} and exception is {}\n\n\n\n\n",e.getMessage(),e);
+					logger.error("\n\nMessage is {} and exception is {}\n\n\n\n\n", e.getMessage(), e);
 				}
-				
+
 			}
 		}
 	}
 
 	public String getReport(String startDate, String endDate) {
-		return smsService.reports("prod",apiKey,secretKey,"2019-12-01","2020-01-30");
-		
+		return smsService.reports("prod", apiKey, secretKey, "2019-12-01", "2020-01-30");
+
 	}
 
 }

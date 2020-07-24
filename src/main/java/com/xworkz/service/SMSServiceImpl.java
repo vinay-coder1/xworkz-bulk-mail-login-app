@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SMSServiceImpl implements SMSService{
+public class SMSServiceImpl implements SMSService {
 
 	Logger logger = LoggerFactory.getLogger(SMSServiceImpl.class);
 

@@ -24,8 +24,8 @@ import com.xworkz.dto.SendMailDTO;
 
 @Service
 @Configuration
-public class OkHttpClientServiceImpl implements OkHttpClientService{
-	
+public class OkHttpClientServiceImpl implements OkHttpClientService {
+
 	@Value("${auth}")
 	private String auth;
 	@Value("${replyTo}")
@@ -43,7 +43,7 @@ public class OkHttpClientServiceImpl implements OkHttpClientService{
 	private String fromName1;
 	@Value("${http1}")
 	private String http1;
-    private Account accountId = Account.Default;
+	private Account accountId = Account.Default;
 
 	private Logger logger = LoggerFactory.getLogger(OkHttpClientServiceImpl.class);
 
@@ -51,7 +51,6 @@ public class OkHttpClientServiceImpl implements OkHttpClientService{
 		logger.info("{} is created..........", this.getClass().getCanonicalName());
 	}
 
-	
 	public boolean sendCompaign(String compaignId, Integer integer) {
 		String a;
 		String rt;
@@ -273,7 +272,7 @@ public class OkHttpClientServiceImpl implements OkHttpClientService{
 		String rt;
 		String fn;
 		String htp;
-		if (mailid == accountId.getId()) {  
+		if (mailid == accountId.getId()) {
 			a = auth1;
 			rt = replyTo1;
 			fn = fromName1;
@@ -328,7 +327,7 @@ public class OkHttpClientServiceImpl implements OkHttpClientService{
 		return data;
 	}
 
-	 public String replaceHTMLData(SendMailDTO dto, String data) {
+	public String replaceHTMLData(SendMailDTO dto, String data) {
 		if (data.contains("dynamicNews")) {
 			data = data.replace("dynamicNews", dto.getDynamicNews() != null ? dto.getDynamicNews() : "");
 		}
