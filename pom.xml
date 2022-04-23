@@ -20,7 +20,7 @@
 
 		<poi.version>3.17</poi.version>
 		<lombok.version>1.18.12</lombok.version>
-		<spring.version>5.0.0.RELEASE</spring.version>
+		<spring.version>5.3.19</spring.version>
 		<commons-lang3.version>3.9</commons-lang3.version>
 		<commons-io.version>2.1</commons-io.version>
 		<poi-ooxml.version>3.17</poi-ooxml.version>
